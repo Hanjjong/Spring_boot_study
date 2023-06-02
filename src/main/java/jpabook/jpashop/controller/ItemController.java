@@ -36,7 +36,7 @@ public class ItemController {
         book.setIsbn(form.getIsbn());
 
         itemService.saveItem(book);
-        return "redirect:/";
+        return "redirect:/items";
     }
 
     @GetMapping("/items")
@@ -48,6 +48,7 @@ public class ItemController {
 
     @GetMapping("item/{itemId}/edit")
     public String updateItemForm(@PathVariable("itemId") Long itemId, Model model){
+
         Book item = (Book) itemService.findOne(itemId);
 
         BookForm form = new BookForm();
